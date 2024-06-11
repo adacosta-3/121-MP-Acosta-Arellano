@@ -1,5 +1,6 @@
 package org.example.backend.hobbies;
 
-@
-public class Hobbies {
+public class HobbiesConfig {
+
+
 }

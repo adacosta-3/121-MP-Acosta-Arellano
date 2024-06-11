@@ -1,4 +1,4 @@
 package org.example.backend.todolist;
 
-public interface ToDoRepository {
+public interface ToDoRepository extends Jpa{
 }
