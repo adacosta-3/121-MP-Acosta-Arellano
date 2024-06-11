@@ -1,11 +1,9 @@
-package org.example.backend.todolist;
+package org.example.backend.hobbies;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.*;
 import jakarta.persistence.*;
+import lombok.*;
 import org.example.backend.user.User;
-
-import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,39 +12,34 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @Table
-public class ToDo {
+public class Hobby {
 
     @Id
     @SequenceGenerator(
-            name = "todo_sequence",
-            sequenceName = "todo_sequence",
+            name = "hobbies_sequence",
+            sequenceName = "hobbies_sequence",
             allocationSize = 1
     )
 
     @GeneratedValue (
             strategy = GenerationType.SEQUENCE,
-            generator = "todo_sequence"
+            generator = "hobbies_sequence"
     )
 
     private Long id;
-    private String task;
+    private String title;
     private String description;
-    private String label;
-    private boolean completed;
-    private LocalDateTime createdAt;
-    private LocalDateTime completedAt;
+    private String mediaLink;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private User user;
 
-    public ToDo (String task, String description, String label, boolean completed, User user) {
-        this.task = task;
+    public Hobby(String title, String description, String mediaLink, User user) {
+        this.title = title;
         this.description = description;
-        this.label = label;
-        this.completed = completed;
+        this.mediaLink = mediaLink;
         this.user = user;
     }
-
 }
