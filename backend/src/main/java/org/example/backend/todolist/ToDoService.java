@@ -28,7 +28,6 @@ public class ToDoService {
         User user = userRepository.findById(toDo.getUser().getId())
                 .orElseThrow(() -> new IllegalStateException("User not found"));
         toDo.setUser(user);
-        toDo.setCreatedAt(LocalDateTime.now());
         toDoRepository.save(toDo);
     }
 
@@ -60,7 +59,6 @@ public class ToDoService {
         ToDo todo = toDoRepository.findById(todoId)
                 .orElseThrow(() -> new IllegalStateException("To-Do entry with id " + todoId + " does not exist"));
         todo.setCompleted(completed);
-        todo.setCompletedAt(completed ? LocalDateTime.now() : null);
         toDoRepository.save(todo);
     }
 

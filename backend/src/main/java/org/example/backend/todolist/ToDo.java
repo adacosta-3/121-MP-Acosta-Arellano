@@ -33,8 +33,7 @@ public class ToDo {
     private String description;
     private String label;
     private boolean completed;
-    private LocalDateTime createdAt;
-    private LocalDateTime completedAt;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

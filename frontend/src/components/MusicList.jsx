@@ -3,35 +3,34 @@ import { getMusicByUser } from '../api/api'; // Adjust the import path as necess
 
 const MusicList = ({ userId }) => {
     const [musicList, setMusicList] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchMusic = async () => {
             try {
-                setLoading(true);
-                const musicData = await getMusicByUser(userId);
-                setMusicList(musicData);
-            } catch (err) {
-                setError(err);
-            } finally {
-                setLoading(false);
+                const data = await getMusicByUser(userId);
+                setMusicList(data);
+                console.log('Music fetched for userId:', userId, data);
+            } catch (error) {
+                console.error('Error fetching music:', error);
             }
         };
-
         fetchMusic();
     }, [userId]);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error fetching music: {error.message}</div>;
-
     return (
         <div>
-            <h1>Music List for User {userId}</h1>
+            <h2>User {userId}'s Music</h2>
             <ul>
                 {musicList.map((music) => (
                     <li key={music.id}>
-                        {music.song} by {music.artist} from the album {music.album}
+                        <h3>Song: {music.song}</h3>
+                        <p>Artist: {music.artist}</p>
+                        <p>Album: {music.album}</p>
+                        {music.aaLink && (
+                            <p>
+                                YouTube Link: <a href={music.aaLink} target="_blank" rel="noopener noreferrer">{music.aaLink}</a>
+                            </p>
+                        )}
                     </li>
                 ))}
             </ul>

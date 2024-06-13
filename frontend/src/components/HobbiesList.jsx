@@ -22,7 +22,15 @@ const HobbiesList = ({ userId }) => {
             <h2>User {userId}'s Hobbies</h2>
             <ul>
                 {hobbies.map((hobby) => (
-                    <li key={hobby.id}>{hobby.title}</li>
+                    <li key={hobby.id}>
+                        <h3>{hobby.title}</h3>
+                        <p>Description: {hobby.description}</p>
+                        {hobby.mediaLink && (
+                            <p>
+                                Media Link: <a href={hobby.mediaLink} target="_blank" rel="noopener noreferrer">{hobby.mediaLink}</a>
+                            </p>
+                        )}
+                    </li>
                 ))}
             </ul>
         </div>
