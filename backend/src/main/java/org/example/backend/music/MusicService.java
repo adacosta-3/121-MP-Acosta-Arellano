@@ -1,5 +1,6 @@
 package org.example.backend.music;
 
+import org.example.backend.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,8 @@ public class MusicService {
         musicRepository.deleteById(musicId);
     }
 
+    public List<Music> getMusicByUser(User user) {
+        return musicRepository.findMusicByUser(user);
+    }
 }
 

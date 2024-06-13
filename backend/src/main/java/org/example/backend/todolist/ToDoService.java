@@ -1,6 +1,7 @@
 package org.example.backend.todolist;
 
 import org.example.backend.user.User;
+import org.example.backend.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,12 @@ import java.util.Objects;
 public class ToDoService {
 
     private final ToDoRepository toDoRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public ToDoService(ToDoRepository toDoRepository) {
+    public ToDoService(ToDoRepository toDoRepository, UserRepository userRepository) {
         this.toDoRepository = toDoRepository;
+        this.userRepository = userRepository;
     }
 
     public List<ToDo> getToDos() { return toDoRepository.findAll(); }
@@ -54,5 +57,15 @@ public class ToDoService {
         ToDo todo = toDoRepository.findById(todoId).orElseThrow(() -> new IllegalStateException("To-Do entry with id " + todoId + " does not exist"));
         todo.setCompleted(completed);
         todo.setCompletedAt(completed ? LocalDateTime.now() : null);
+    }
+
+    public List<ToDo> getCompletedToDosByUser(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User does not exist"));
+        return toDoRepository.findToDoByUserAndCompleted(user, true);
+    }
+
+    public List<ToDo> getUnfinishedToDosByUser(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User does not exist"));
+        return toDoRepository.findToDoByUserAndCompleted(user, false);
     }
 }

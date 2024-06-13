@@ -9,7 +9,6 @@ import java.util.List;
 @Repository
 public interface ToDoRepository extends JpaRepository<ToDo, Long> {
     List<ToDo> findToDoByUser(User user);
-    List<ToDo> findToDoByLabel(String label);
     List<ToDo> findToDoByUserAndLabel(User user, String label);
-
+    List<ToDo> findToDoByUserAndCompleted(User user, boolean completed);
 }

@@ -1,6 +1,8 @@
 package org.example.backend.todolist;
 
+
 import org.example.backend.user.User;
+import org.example.backend.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,20 +12,32 @@ import java.util.List;
 @RequestMapping(path = "/api/v1/todos")
 public class ToDoController {
     private final ToDoService toDoService;
+    private final UserRepository userRepository;
 
     @Autowired
-    public ToDoController(ToDoService toDoService) {
+    public ToDoController(ToDoService toDoService, UserRepository userRepository) {
         this.toDoService = toDoService;
+        this.userRepository = userRepository;
     }
 
     @GetMapping
     public List<ToDo> getToDos() { return toDoService.getToDos(); }
 
-    @GetMapping(path = "user/{userId}")
+    @GetMapping("/user/{userId}")
     public List<ToDo> getToDosByUser(@PathVariable Long userId) {
-        User user = new User();
-        user.setId(userId);
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalStateException("User does not exist"));
         return toDoService.getToDosByUser(user);
+    }
+
+    @GetMapping("/user/{userId}/completed")
+    public List<ToDo> getCompletedToDosByUser(@PathVariable Long userId) {
+        return toDoService.getCompletedToDosByUser(userId);
+    }
+
+    @GetMapping("/user/{userId}/unfinished")
+    public List<ToDo> getUnfinishedToDosByUser(@PathVariable Long userId) {
+        return toDoService.getUnfinishedToDosByUser(userId);
     }
 
     @GetMapping("/filter")

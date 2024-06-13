@@ -1,5 +1,6 @@
 package org.example.backend.hobbies;
 
+import org.example.backend.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,8 @@ public class HobbiesService {
     }
 
     public List<Hobby> getHobbies() { return hobbiesRepository.findAll(); }
+
+    public List<Hobby> getHobbiesByUser(User user) { return hobbiesRepository.findHobbyByUser(user); }
 
     public void addNewHobby(Hobby hobby) {
         hobbiesRepository.save(hobby);
