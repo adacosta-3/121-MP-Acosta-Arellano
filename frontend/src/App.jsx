@@ -1,21 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import ToDoList from "./components/ToDoList.jsx";
-
-
 import React from 'react';
-import MusicList from './components/MusicList';
-import HobbiesList from "./components/HobbiesList.jsx";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
+import ToDosPage from './pages/ToDosPage';
+import HobbiesPage from './pages/HobbiesPage';
+import MusicPage from './pages/MusicPage';
 
 const App = () => {
     return (
-        <div>
-            {/*<MusicList userId={1} />*/}
-            {/*<ToDoList userId={1}/>*/}
-            {/*<HobbiesList userId={1} />*/}
-        </div>
+        <Router>
+            <div>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/todos" element={<ToDosPage />} />
+                    <Route path="/hobbies" element={<HobbiesPage />} />
+                    <Route path="/music" element={<MusicPage />} />
+                </Routes>
+            </div>
+        </Router>
     );
 };
 

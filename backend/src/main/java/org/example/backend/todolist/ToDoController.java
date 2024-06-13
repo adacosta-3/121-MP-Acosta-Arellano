@@ -4,6 +4,8 @@ package org.example.backend.todolist;
 import org.example.backend.user.User;
 import org.example.backend.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,10 +49,26 @@ public class ToDoController {
         return toDoService.filterToDosByLabel(user, label);
     }
 
-    @PostMapping
-    public void addNewToDo(@RequestBody ToDo toDo) {
-        toDoService.addNewToDo(toDo);
+    @GetMapping("/user/{userId}/label/{label}/completed")
+    public List<ToDo> getCompletedToDosByUserAndLabel(@PathVariable Long userId, @PathVariable String label) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User does not exist"));
+        return toDoService.getToDosByUserAndLabelAndCompleted(user, label, true);
     }
+
+    @GetMapping("/user/{userId}/label/{label}/unfinished")
+    public List<ToDo> getUnfinishedToDosByUserAndLabel(@PathVariable Long userId, @PathVariable String label) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User does not exist"));
+        return toDoService.getToDosByUserAndLabelAndCompleted(user, label, false);
+    }
+
+    @GetMapping("/user/{userId}/labels")
+    public List<String> getLabelsByUser(@PathVariable Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User does not exist"));
+        return toDoService.getLabelsByUser(user);
+    }
+
+    @PostMapping
+    public void addNewTodo(@RequestBody ToDo todo){toDoService.addNewToDo(todo);}
 
     @DeleteMapping(path = "{todoId}")
     public void deleteToDo(@PathVariable("todoId") Long todoId) {
@@ -66,8 +84,9 @@ public class ToDoController {
         toDoService.updateToDo(todoId, task, description, label);
     }
 
-    @PutMapping(path = "completion/{todoId}")
+    @PutMapping(path = "/completion/{todoId}")
     public void updateCompletion(@PathVariable("todoId") Long todoId, @RequestParam boolean completed) {
+        System.out.println("Received request to update completion status of todo with ID: " + todoId + " to " + completed);
         toDoService.updateCompletion(todoId, completed);
     }
 }

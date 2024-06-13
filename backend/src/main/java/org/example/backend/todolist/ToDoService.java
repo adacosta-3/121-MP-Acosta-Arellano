@@ -25,6 +25,9 @@ public class ToDoService {
     public List<ToDo> getToDosByUser(User user) { return toDoRepository.findToDoByUser(user); }
 
     public void addNewToDo(ToDo toDo) {
+        User user = userRepository.findById(toDo.getUser().getId())
+                .orElseThrow(() -> new IllegalStateException("User not found"));
+        toDo.setUser(user);
         toDo.setCreatedAt(LocalDateTime.now());
         toDoRepository.save(toDo);
     }
@@ -54,9 +57,11 @@ public class ToDoService {
     public List<ToDo> filterToDosByLabel(User user, String label) { return toDoRepository.findToDoByUserAndLabel(user, label); }
 
     public void updateCompletion(Long todoId, boolean completed) {
-        ToDo todo = toDoRepository.findById(todoId).orElseThrow(() -> new IllegalStateException("To-Do entry with id " + todoId + " does not exist"));
+        ToDo todo = toDoRepository.findById(todoId)
+                .orElseThrow(() -> new IllegalStateException("To-Do entry with id " + todoId + " does not exist"));
         todo.setCompleted(completed);
         todo.setCompletedAt(completed ? LocalDateTime.now() : null);
+        toDoRepository.save(todo);
     }
 
     public List<ToDo> getCompletedToDosByUser(Long userId) {
@@ -67,5 +72,17 @@ public class ToDoService {
     public List<ToDo> getUnfinishedToDosByUser(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User does not exist"));
         return toDoRepository.findToDoByUserAndCompleted(user, false);
+    }
+
+    public List<ToDo> getToDosByUserAndLabelAndCompleted(User user, String label, boolean completed) {
+        return toDoRepository.findToDoByUserAndLabelAndCompleted(user, label, completed);
+    }
+
+    public List<ToDo> getToDosByUserAndCompleted(User user, boolean completed) {
+        return toDoRepository.findToDoByUserAndCompleted(user, completed);
+    }
+
+    public List<String> getLabelsByUser(User user) {
+        return toDoRepository.findDistinctLabelsByUser(user);
     }
 }

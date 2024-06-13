@@ -1,30 +1,29 @@
-import React, { useState, useEffect } from 'react';
+// components/HobbiesList.js
+import React, { useEffect, useState } from 'react';
 import { getHobbiesByUser } from '../api/api';
 
 const HobbiesList = ({ userId }) => {
     const [hobbies, setHobbies] = useState([]);
 
     useEffect(() => {
+        const fetchHobbies = async () => {
+            try {
+                const data = await getHobbiesByUser(userId);
+                setHobbies(data);
+                console.log('Hobbies fetched for userId:', userId, data);
+            } catch (error) {
+                console.error('Error fetching hobbies:', error);
+            }
+        };
         fetchHobbies();
-    }, []);
-
-    const fetchHobbies = async () => {
-        try {
-            const data = await getHobbiesByUser(userId);
-            setHobbies(data);
-        } catch (error) {
-            console.error('Error fetching hobbies:', error);
-        }
-    };
+    }, [userId]);
 
     return (
         <div>
-            <h1>Hobbies List</h1>
+            <h2>User {userId}'s Hobbies</h2>
             <ul>
                 {hobbies.map((hobby) => (
-                    <li key={hobby.id}>
-                        <span>{hobby.title}</span> - <span>{hobby.description}</span> - <span>{hobby.mediaLink}</span>
-                    </li>
+                    <li key={hobby.id}>{hobby.title}</li>
                 ))}
             </ul>
         </div>

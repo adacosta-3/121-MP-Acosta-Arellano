@@ -1,99 +1,150 @@
 import React, { useState, useEffect } from 'react';
-import { getToDosByUser, addToDo, updateToDo, deleteToDo } from '../api/api';
+import {
+    getUnfinishedToDosByUser,
+    getCompletedToDosByUser,
+    addToDo,
+    deleteToDo,
+    updateCompletion,
+    getUnfinishedToDosByUserAndLabel,
+    getCompletedToDosByUserAndLabel
+} from '../api/api';
+import ToDoItem from './ToDoItem';
 
 const ToDoList = ({ userId }) => {
-    const [todos, setTodos] = useState([]);
-    const [newTask, setNewTask] = useState('');
-    const [newDescription, setNewDescription] = useState('');
-    const [newLabel, setNewLabel] = useState('');
+    const [tasks, setTasks] = useState([]);
+    const [completedTasks, setCompletedTasks] = useState([]);
+    const [taskText, setTaskText] = useState('');
+    const [taskDescription, setTaskDescription] = useState('');
+    const [taskLabel, setTaskLabel] = useState('');
+    const [selectedLabel, setSelectedLabel] = useState('All');
+    const [labels, setLabels] = useState([]);
 
     useEffect(() => {
-        fetchToDos();
-    }, []);
+        fetchTodos();
+        fetchLabels();
+    }, [userId]);
 
-    const fetchToDos = async () => {
+    useEffect(() => {
+        fetchTodos();
+    }, [selectedLabel]);
+
+    const fetchTodos = async () => {
         try {
-            const data = await getToDosByUser(userId);
-            setTodos(data);
+            if (selectedLabel === 'All') {
+                const unfinished = await getUnfinishedToDosByUser(userId);
+                const completed = await getCompletedToDosByUser(userId);
+                setTasks(unfinished);
+                setCompletedTasks(completed);
+            } else {
+                const unfinished = await getUnfinishedToDosByUserAndLabel(userId, selectedLabel);
+                const completed = await getCompletedToDosByUserAndLabel(userId, selectedLabel);
+                setTasks(unfinished);
+                setCompletedTasks(completed);
+            }
         } catch (error) {
             console.error('Error fetching todos:', error);
         }
     };
 
-    const handleAddToDo = async () => {
-        if (!newTask) return;
-
-        const newToDo = {
-            task: newTask,
-            description: newDescription,
-            label: newLabel,
-            user: { id: userId },
-        };
-
+    const fetchLabels = async () => {
         try {
-            await addToDo(newToDo);
-            fetchToDos();
-            setNewTask('');
-            setNewDescription('');
-            setNewLabel('');
+            const allTasks = await getUnfinishedToDosByUser(userId);
+            const uniqueLabels = [...new Set(allTasks.map(task => task.label))];
+            setLabels(uniqueLabels);
+        } catch (error) {
+            console.error('Error fetching labels:', error);
+        }
+    };
+
+    const handleAddTask = async () => {
+        try {
+            await addToDo({
+                user: { id: userId },
+                task: taskText,
+                description: taskDescription,
+                label: taskLabel,
+                completed: false
+            });
+            fetchTodos();
+            if (taskLabel && !labels.includes(taskLabel)) {
+                setLabels([...labels, taskLabel]);
+            }
+            setTaskText('');
+            setTaskDescription('');
+            setTaskLabel('');
         } catch (error) {
             console.error('Error adding todo:', error);
         }
     };
 
-    const handleUpdateToDo = async (todoId, task, description, label) => {
+    const handleDeleteTask = async (id) => {
         try {
-            await updateToDo(todoId, task, description, label);
-            fetchToDos();
-        } catch (error) {
-            console.error('Error updating todo:', error);
-        }
-    };
-
-    const handleDeleteToDo = async (todoId) => {
-        try {
-            await deleteToDo(todoId);
-            fetchToDos();
+            await deleteToDo(id);
+            fetchTodos();
+            // Update labels after deletion
+            const allTasks = await getUnfinishedToDosByUser(userId);
+            const uniqueLabels = [...new Set(allTasks.map(task => task.label))];
+            setLabels(uniqueLabels);
         } catch (error) {
             console.error('Error deleting todo:', error);
         }
     };
 
+    const handleToggleCompleted = async (id, completed) => {
+        try {
+            await updateCompletion(id, completed);
+            fetchTodos();
+        } catch (error) {
+            console.error('Error updating todo:', error);
+        }
+    };
+
     return (
-        <div>
-            <h1>ToDo List</h1>
-            <div>
-                <input
-                    type="text"
-                    placeholder="New task"
-                    value={newTask}
-                    onChange={(e) => setNewTask(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Description"
-                    value={newDescription}
-                    onChange={(e) => setNewDescription(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Label"
-                    value={newLabel}
-                    onChange={(e) => setNewLabel(e.target.value)}
-                />
-                <button onClick={handleAddToDo}>Add ToDo</button>
-            </div>
-            <ul>
-                {todos.map((todo) => (
-                    <li key={todo.id}>
-                        <span>{todo.task}</span>
-                        <span>{todo.description}</span>
-                        <span>{todo.label}</span>
-                        <button onClick={() => handleUpdateToDo(todo.id, todo.task, todo.description, todo.label)}>Update</button>
-                        <button onClick={() => handleDeleteToDo(todo.id)}>Delete</button>
-                    </li>
+        <div className="todo-list">
+            <h2>To-Do List</h2>
+            <select value={selectedLabel} onChange={(e) => setSelectedLabel(e.target.value)}>
+                <option value="All">All</option>
+                {labels.map((label, index) => (
+                    <option key={index} value={label}>{label}</option>
                 ))}
-            </ul>
+            </select>
+            <div>
+                {tasks.map(task => (
+                    <ToDoItem
+                        key={task.id}
+                        task={task}
+                        deleteTask={handleDeleteTask}
+                        toggleCompleted={handleToggleCompleted}
+                    />
+                ))}
+            </div>
+            <div>
+                <h3>Completed Tasks</h3>
+                {completedTasks.map(task => (
+                    <ToDoItem
+                        key={task.id}
+                        task={task}
+                        deleteTask={handleDeleteTask}
+                        toggleCompleted={handleToggleCompleted}
+                    />
+                ))}
+            </div>
+            <input
+                value={taskText}
+                onChange={(e) => setTaskText(e.target.value)}
+                placeholder="Task"
+            />
+            <input
+                value={taskDescription}
+                onChange={(e) => setTaskDescription(e.target.value)}
+                placeholder="Description"
+            />
+            <input
+                value={taskLabel}
+                onChange={(e) => setTaskLabel(e.target.value)}
+                placeholder="Label"
+            />
+            <button onClick={handleAddTask}>Add</button>
         </div>
     );
 };

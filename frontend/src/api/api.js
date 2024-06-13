@@ -34,7 +34,6 @@ export const addToDo = async (todo) => {
     const response = await api.post('/todos', todo);
     return response.data;
 };
-
 export const updateToDo = async (todoId, task, description, label) => {
     const response = await api.put(`/todos/update/${todoId}`, null, {
         params: { task, description, label },
@@ -57,5 +56,17 @@ export const deleteToDo = async (todoId) => {
 // Hobbies APIs
 export const getHobbiesByUser = async (userId) => {
     const response = await api.get(`/hobbies/user/${userId}`);
+    return response.data;
+};
+
+export const getUnfinishedToDosByUserAndLabel = async (userId, label) => {
+    const encodedLabel = encodeURIComponent(label);
+    const response = await api.get(`/todos/user/${userId}/label/${encodedLabel}/unfinished`);
+    return response.data;
+};
+
+export const getCompletedToDosByUserAndLabel = async (userId, label) => {
+    const encodedLabel = encodeURIComponent(label);
+    const response = await api.get(`/todos/user/${userId}/label/${encodedLabel}/completed`);
     return response.data;
 };
