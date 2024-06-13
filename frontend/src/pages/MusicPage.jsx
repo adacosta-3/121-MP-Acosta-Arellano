@@ -1,4 +1,3 @@
-// pages/MusicPage.js
 import React, { useState } from 'react';
 import UserSwitcher from '../components/UserSwitcher';
 import MusicList from '../components/MusicList';

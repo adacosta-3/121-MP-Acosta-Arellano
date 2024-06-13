@@ -1,4 +1,3 @@
-// components/UserSwitcher.js
 import React from 'react';
 
 const UserSwitcher = ({ selectedUserId, setSelectedUserId }) => {

@@ -1,4 +1,3 @@
-// pages/HobbiesPage.js
 import React, { useState, useEffect } from 'react';
 import UserSwitcher from '../components/UserSwitcher';
 import HobbiesList from '../components/HobbiesList';
