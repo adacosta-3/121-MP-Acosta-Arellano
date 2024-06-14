@@ -11,12 +11,14 @@ const App = () => {
         <Router>
             <div>
                 <Navbar />
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/todos" element={<ToDosPage />} />
-                    <Route path="/hobbies" element={<HobbiesPage />} />
-                    <Route path="/music" element={<MusicPage />} />
-                </Routes>
+                <div style={{ marginLeft: '250px', padding: '20px' }}>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/todos" element={<ToDosPage />} />
+                        <Route path="/hobbies" element={<HobbiesPage />} />
+                        <Route path="/music" element={<MusicPage />} />
+                    </Routes>
+                </div>
             </div>
         </Router>
     );

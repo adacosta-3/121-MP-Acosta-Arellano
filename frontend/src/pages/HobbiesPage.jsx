@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import UserSwitcher from '../components/UserSwitcher';
 import HobbiesList from '../components/HobbiesList';
+import './Pages.css';
 
 const HobbiesPage = () => {
     const [selectedUserId, setSelectedUserId] = useState(1);

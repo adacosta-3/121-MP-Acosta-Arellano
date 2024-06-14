@@ -1,0 +1,109 @@
+.todo-list {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FDFDF2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    font-size: 14px;
+    color: #384E53;
+}
+
+.todo-section, .completed-section {
+    padding: 10px;
+    margin-top: 0;
+    background-color: #F0F0F0;
+    border-radius: 20px;
+}
+
+.todo-section h2, .completed-section h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #384E53;
+    margin-bottom: 10px;
+}
+
+.todo-section select {
+    font-size: 14px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.todo-item {
+    background-color: #DFE2E4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding:10px;
+}
+
+.todo-item .task-details {
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.todo-item .task-checkbox {
+    margin-right: 10px;
+}
+
+.todo-item .delete-task {
+    margin-left: auto;
+}
+
+.add-task {
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    background-color: #FDFDF2;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.add-task input {
+    font-size: 14px;
+    color: #384E53;
+    padding: 10px;
+    margin-right: 10px; /* Add space between text fields */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    flex: 1;
+    background-color: #FFDF5D;
+}
+
+.add-task button {
+    background-color: #000000;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-task button:hover {
+    background-color: #52B07F;
+}
+
+.fa-plus {
+    margin-right: 5px;
+}
+
+.delete-task {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    color: #666;
+    font-size: 16px;
+    transition: color 0.2s;
+}
+
+.delete-task:hover {
+    color: #B80F09;
+}

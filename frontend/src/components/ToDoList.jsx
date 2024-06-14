@@ -9,6 +9,7 @@ import {
     getCompletedToDosByUserAndLabel
 } from '../api/api';
 import ToDoItem from './ToDoItem';
+import './ToDoList.css';
 
 const ToDoList = ({ userId }) => {
     const [tasks, setTasks] = useState([]);
@@ -100,51 +101,55 @@ const ToDoList = ({ userId }) => {
     };
 
     return (
-        <div className="todo-list">
-            <h2>To-Do List</h2>
-            <select value={selectedLabel} onChange={(e) => setSelectedLabel(e.target.value)}>
-                <option value="All">All</option>
-                {labels.map((label, index) => (
-                    <option key={index} value={label}>{label}</option>
-                ))}
-            </select>
-            <div>
-                {tasks.map(task => (
-                    <ToDoItem
-                        key={task.id}
-                        task={task}
-                        deleteTask={handleDeleteTask}
-                        toggleCompleted={handleToggleCompleted}
-                    />
-                ))}
+        <div>
+            <div className="add-task">
+                <input
+                    value={taskText}
+                    onChange={(e) => setTaskText(e.target.value)}
+                    placeholder="Task"
+                />
+                <input
+                    value={taskDescription}
+                    onChange={(e) => setTaskDescription(e.target.value)}
+                    placeholder="Description"
+                />
+                <input
+                    value={taskLabel}
+                    onChange={(e) => setTaskLabel(e.target.value)}
+                    placeholder="Label"
+                />
+                <button onClick={handleAddTask}><i className="fas fa-plus"></i></button>
             </div>
-            <div>
-                <h3>Completed Tasks</h3>
-                {completedTasks.map(task => (
-                    <ToDoItem
-                        key={task.id}
-                        task={task}
-                        deleteTask={handleDeleteTask}
-                        toggleCompleted={handleToggleCompleted}
-                    />
-                ))}
+            <div className="todo-list">
+                <div className="todo-section">
+                    <h2>To-Do List</h2>
+                    <select value={selectedLabel} onChange={(e) => setSelectedLabel(e.target.value)}>
+                        <option value="All">All</option>
+                        {labels.map((label, index) => (
+                            <option key={index} value={label}>{label}</option>
+                        ))}
+                    </select>
+                    {tasks.map(task => (
+                        <ToDoItem
+                            key={task.id}
+                            task={task}
+                            deleteTask={handleDeleteTask}
+                            toggleCompleted={handleToggleCompleted}
+                        />
+                    ))}
+                </div>
+                <div className="completed-section">
+                    <h3>Completed Tasks</h3>
+                    {completedTasks.map(task => (
+                        <ToDoItem
+                            key={task.id}
+                            task={task}
+                            deleteTask={handleDeleteTask}
+                            toggleCompleted={handleToggleCompleted}
+                        />
+                    ))}
+                </div>
             </div>
-            <input
-                value={taskText}
-                onChange={(e) => setTaskText(e.target.value)}
-                placeholder="Task"
-            />
-            <input
-                value={taskDescription}
-                onChange={(e) => setTaskDescription(e.target.value)}
-                placeholder="Description"
-            />
-            <input
-                value={taskLabel}
-                onChange={(e) => setTaskLabel(e.target.value)}
-                placeholder="Label"
-            />
-            <button onClick={handleAddTask}>Add</button>
         </div>
     );
 };
