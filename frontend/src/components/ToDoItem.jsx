@@ -1,21 +1,23 @@
 import React from 'react';
+import './ToDoItem.css';
 
 const ToDoItem = ({ task, deleteTask, toggleCompleted }) => {
-    const handleChange = () => {
-        toggleCompleted(task.id, !task.completed);
-    };
-
     return (
         <div className="todo-item">
             <input
                 type="checkbox"
                 checked={task.completed}
-                onChange={handleChange}
+                onChange={() => toggleCompleted(task.id, !task.completed)}
+                className="task-checkbox"
             />
-            <p>Task: {task.task}</p>
-            <p>Description: {task.description}</p>
-            <p>Label: {task.label}</p>
-            <button onClick={() => deleteTask(task.id)}>X</button>
+            <div className="task-details">
+                <div>{task.task}</div>
+                <div>{task.description}</div>
+                <div>{task.label}</div>
+            </div>
+            <button className="delete-task" onClick={() => deleteTask(task.id)}>
+                <i className="fas fa-trash"></i>
+            </button>
         </div>
     );
 };
