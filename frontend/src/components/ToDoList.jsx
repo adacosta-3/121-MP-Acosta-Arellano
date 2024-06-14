@@ -139,7 +139,7 @@ const ToDoList = ({ userId }) => {
                     ))}
                 </div>
                 <div className="completed-section">
-                    <h3>Completed Tasks</h3>
+                    <h2>Completed Tasks</h2>
                     {completedTasks.map(task => (
                         <ToDoItem
                             key={task.id}
