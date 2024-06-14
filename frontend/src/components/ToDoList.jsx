@@ -23,11 +23,7 @@ const ToDoList = ({ userId }) => {
     useEffect(() => {
         fetchTodos();
         fetchLabels();
-    }, [userId]);
-
-    useEffect(() => {
-        fetchTodos();
-    }, [selectedLabel]);
+    }, [userId, selectedLabel]);
 
     const fetchTodos = async () => {
         try {
@@ -49,7 +45,9 @@ const ToDoList = ({ userId }) => {
 
     const fetchLabels = async () => {
         try {
-            const allTasks = await getUnfinishedToDosByUser(userId);
+            const unfinished = await getUnfinishedToDosByUser(userId);
+            const completed = await getCompletedToDosByUser(userId);
+            const allTasks = [...unfinished, ...completed];
             const uniqueLabels = [...new Set(allTasks.map(task => task.label))];
             setLabels(uniqueLabels);
         } catch (error) {
@@ -67,9 +65,7 @@ const ToDoList = ({ userId }) => {
                 completed: false
             });
             fetchTodos();
-            if (taskLabel && !labels.includes(taskLabel)) {
-                setLabels([...labels, taskLabel]);
-            }
+            fetchLabels();
             setTaskText('');
             setTaskDescription('');
             setTaskLabel('');
@@ -82,10 +78,7 @@ const ToDoList = ({ userId }) => {
         try {
             await deleteToDo(id);
             fetchTodos();
-            // Update labels after deletion
-            const allTasks = await getUnfinishedToDosByUser(userId);
-            const uniqueLabels = [...new Set(allTasks.map(task => task.label))];
-            setLabels(uniqueLabels);
+            fetchLabels();
         } catch (error) {
             console.error('Error deleting todo:', error);
         }
@@ -95,6 +88,7 @@ const ToDoList = ({ userId }) => {
         try {
             await updateCompletion(id, completed);
             fetchTodos();
+            fetchLabels();
         } catch (error) {
             console.error('Error updating todo:', error);
         }
