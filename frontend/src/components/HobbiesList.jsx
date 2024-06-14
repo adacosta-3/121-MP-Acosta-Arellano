@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getHobbiesByUser } from '../api/api';
+import YoutubeEmbed from "./YoutubeEmbed.jsx";
 
 const HobbiesList = ({ userId, nickname }) => {
     const [hobbies, setHobbies] = useState([]);
@@ -17,6 +18,13 @@ const HobbiesList = ({ userId, nickname }) => {
         fetchHobbies();
     }, [userId]);
 
+
+    const extractEmbedId = (url) => {
+        const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const match = url.match(regex);
+        return match ? match[1] : null;
+    };
+
     return (
         <div>
             <h2>{nickname}'s Hobbies</h2>
@@ -27,7 +35,9 @@ const HobbiesList = ({ userId, nickname }) => {
                         <p>Description: {hobby.description}</p>
                         {hobby.mediaLink && (
                             <p>
-                                Media Link: <a href={hobby.mediaLink} target="_blank" rel="noopener noreferrer">{hobby.mediaLink}</a>
+                                <p>Media Link: <a href={hobby.mediaLink} target="_blank"
+                                                  rel="noopener noreferrer">{hobby.mediaLink}</a></p>
+                                <YoutubeEmbed embedId={extractEmbedId(hobby.mediaLink)}/>
                             </p>
                         )}
                     </li>
