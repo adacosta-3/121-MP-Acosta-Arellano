@@ -4,6 +4,7 @@ import HobbiesList from '../components/HobbiesList';
 import { getUserDetails } from '../api/api';
 import "./YT.css";
 import YoutubeEmbed from "../components/YoutubeEmbed";
+import './Pages.css';
 
 const HobbiesPage = () => {
     const [selectedUserId, setSelectedUserId] = useState(1);

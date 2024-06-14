@@ -1,5 +1,5 @@
 .todo-list {
-    max-width: 800px;
+    width: 800px;
     margin: 20px auto;
     padding: 20px;
     background-color: #FDFDF2;
@@ -9,7 +9,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     font-size: 14px;
-    color: #384E53;
+    color: #555555;
 }
 
 .todo-section, .completed-section {
@@ -19,16 +19,22 @@
     border-radius: 20px;
 }
 
-.todo-section h2, .completed-section h2 {
-    margin-top: 0;
+.todo-section h3, .completed-section h3 {
+    margin-top: 5px;
     font-size: 18px;
     color: #384E53;
     margin-bottom: 10px;
 }
 
+h2 {
+    font-size: 32px;
+    color: #384E53;
+}
+
 .todo-section select {
-    font-size: 14px;
-    padding: 8px;
+    width: 50%;
+    font-size: 12px;
+    padding: 2px;
     margin-bottom: 10px;
 }
 
@@ -71,7 +77,7 @@
     font-size: 14px;
     color: #384E53;
     padding: 10px;
-    margin-right: 10px; /* Add space between text fields */
+    margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
     flex: 1;

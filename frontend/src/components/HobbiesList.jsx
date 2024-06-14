@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getHobbiesByUser } from '../api/api';
 import YoutubeEmbed from "./YoutubeEmbed.jsx";
+import './HobbiesList.css';
 
 const HobbiesList = ({ userId, nickname }) => {
     const [hobbies, setHobbies] = useState([]);
@@ -18,7 +19,6 @@ const HobbiesList = ({ userId, nickname }) => {
         fetchHobbies();
     }, [userId]);
 
-
     // Extract embed ID for YouTube video embedding
     const extractEmbedId = (url) => {
         const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
@@ -28,22 +28,29 @@ const HobbiesList = ({ userId, nickname }) => {
 
     return (
         <div>
-            <h2>{nickname}'s Hobbies</h2>
-            <ul>
-                {hobbies.map((hobby) => (
-                    <li key={hobby.id}>
-                        <h3>{hobby.title}</h3>
-                        <p>Description: {hobby.description}</p>
-                        {hobby.mediaLink && (
-                            <p>
-                                <p>Media Link: <a href={hobby.mediaLink} target="_blank"
-                                                  rel="noopener noreferrer">{hobby.mediaLink}</a></p>
-                                <YoutubeEmbed embedId={extractEmbedId(hobby.mediaLink)}/>
-                            </p>
-                        )}
-                    </li>
-                ))}
-            </ul>
+            <div className="hobbies-heading-container">
+                <h2 className="hobbies-heading">{nickname}'s Hobbies</h2>
+            </div>
+            <div className="hobbies-container">
+                <ul className="hobbies-list">
+                    {hobbies.map((hobby) => (
+                        <li key={hobby.id} className="hobby-item">
+                            <div className="hobby-content">
+                                {hobby.mediaLink && (
+                                    <div className="video-embed">
+                                        <YoutubeEmbed embedId={extractEmbedId(hobby.mediaLink)} />
+                                    </div>
+                                )}
+                                <div className="hobby-details">
+                                    <h3 className="hobby-name">{hobby.title}</h3>
+                                    <p className="hobby-description">Description: {hobby.description}</p>
+                                    {/* Remove the media link paragraph */}
+                                </div>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };

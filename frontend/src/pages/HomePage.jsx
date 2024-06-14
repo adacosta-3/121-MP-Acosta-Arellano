@@ -1,5 +1,6 @@
 import React from 'react';
 import "../components/Navbar.jsx";
+import './Pages.css';
 
 const HomePage = () => {
     return (
