@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import UserSwitcher from '../components/UserSwitcher';
 import MusicList from '../components/MusicList';
-import './Pages.css';
 
 const MusicPage = () => {
     const [selectedUserId, setSelectedUserId] = useState(1);

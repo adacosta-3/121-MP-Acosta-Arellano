@@ -19,7 +19,7 @@
     border-radius: 20px;
 }
 
-.todo-section h2, .completed-section h3 {
+.todo-section h2, .completed-section h2 {
     margin-top: 0;
     font-size: 18px;
     color: #384E53;
