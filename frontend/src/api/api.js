@@ -4,6 +4,11 @@ const api = axios.create({
     baseURL: 'http://localhost:8080/api/v1',
 });
 
+export const getUserDetails = async (userId) => {
+    const response = await api.get(`/users/user/${userId}`);
+    return response.data;
+};
+
 // Music APIs
 export const getMusicByUser = async (userId) => {
     const response = await api.get(`/music/user/${userId}`);

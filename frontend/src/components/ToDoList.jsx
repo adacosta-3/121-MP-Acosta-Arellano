@@ -11,7 +11,7 @@ import {
 import ToDoItem from './ToDoItem';
 import './ToDoList.css';
 
-const ToDoList = ({ userId }) => {
+const ToDoList = ({ userId , nickname}) => {
     const [tasks, setTasks] = useState([]);
     const [completedTasks, setCompletedTasks] = useState([]);
     const [taskText, setTaskText] = useState('');
@@ -96,6 +96,7 @@ const ToDoList = ({ userId }) => {
 
     return (
         <div>
+            <h2>{nickname}'s To-Do List</h2>
             <div className="add-task">
                 <input
                     value={taskText}

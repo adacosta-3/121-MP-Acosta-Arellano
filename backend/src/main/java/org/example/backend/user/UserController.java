@@ -1,9 +1,11 @@
 package org.example.backend.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path="/api/v1/users")
@@ -16,6 +18,12 @@ public class UserController {
 
     @GetMapping
     public List<User> getUsers() {return userService.getUsers();}
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
+        Optional<User> user = userService.getUserById(userId);
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
     @PostMapping
     public void registerNewUser(@RequestBody User user) {

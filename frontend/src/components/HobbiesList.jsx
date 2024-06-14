@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getHobbiesByUser } from '../api/api';
 
-const HobbiesList = ({ userId }) => {
+const HobbiesList = ({ userId, nickname }) => {
     const [hobbies, setHobbies] = useState([]);
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const HobbiesList = ({ userId }) => {
 
     return (
         <div>
-            <h2>User {userId}'s Hobbies</h2>
+            <h2>{nickname}'s Hobbies</h2>
             <ul>
                 {hobbies.map((hobby) => (
                     <li key={hobby.id}>

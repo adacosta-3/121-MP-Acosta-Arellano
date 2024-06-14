@@ -18,8 +18,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    @GetMapping
     public List<User> getUsers() { return userRepository.findAll(); }
+
+    public Optional<User> getUserById(Long id) {
+        return userRepository.findUserById(id);
+    }
 
     public void addNewUser(User user) {
         Optional<User> userByUsername = userRepository.findUserByUsername(user.getUsername());

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getMusicByUser } from '../api/api'; // Adjust the import path as necessary
 
-const MusicList = ({ userId }) => {
+const MusicList = ({ userId, nickname}) => {
     const [musicList, setMusicList] = useState([]);
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const MusicList = ({ userId }) => {
 
     return (
         <div>
-            <h2>User {userId}'s Music</h2>
+            <h2>{nickname}'s Music</h2>
             <ul>
                 {musicList.map((music) => (
                     <li key={music.id}>
