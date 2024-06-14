@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getMusicByUser } from '../api/api'; // Adjust the import path as necessary
+import './MusicList.css';
 
-const MusicList = ({ userId, nickname}) => {
+const MusicList = ({ userId, nickname }) => {
     const [musicList, setMusicList] = useState([]);
 
     useEffect(() => {
@@ -19,21 +20,29 @@ const MusicList = ({ userId, nickname}) => {
 
     return (
         <div>
-            <h2>{nickname}'s Music</h2>
-            <ul>
-                {musicList.map((music) => (
-                    <li key={music.id}>
-                        <h3>Song: {music.song}</h3>
-                        <p>Artist: {music.artist}</p>
-                        <p>Album: {music.album}</p>
-                        {music.aaLink && (
-                            <p>
-                                YouTube Link: <a href={music.aaLink} target="_blank" rel="noopener noreferrer">{music.aaLink}</a>
-                            </p>
-                        )}
-                    </li>
-                ))}
-            </ul>
+            <div className="music-heading-container">
+                <h2 className="music-heading">{nickname}'s Music</h2>
+            </div>
+            <div className="music-container">
+                <ul className="music-list">
+                    {musicList.map((music, index) => (
+                        <li key={music.id} className="music-item">
+                            <span className="music-number">{index + 1}.</span>
+                            <img src={music.aaLink} alt="Album Artwork" />
+                            <div>
+                                <h3>{music.song}</h3>
+                                <p>Artist: {music.artist}</p>
+                                <p>Album: {music.album}</p>
+                                {/* {music.aaLink && (
+                                    <p>
+                                        YouTube Link: <a href={music.aaLink} target="_blank" rel="noopener noreferrer">{music.aaLink}</a>
+                                    </p>
+                                )} */}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };

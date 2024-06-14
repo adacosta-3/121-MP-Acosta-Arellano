@@ -117,7 +117,7 @@ const ToDoList = ({ userId , nickname}) => {
             </div>
             <div className="todo-list">
                 <div className="todo-section">
-                    <h2>To-Do List</h2>
+                    <h3>To-Do List</h3>
                     <select value={selectedLabel} onChange={(e) => setSelectedLabel(e.target.value)}>
                         <option value="All">All</option>
                         {labels.map((label, index) => (
@@ -134,7 +134,7 @@ const ToDoList = ({ userId , nickname}) => {
                     ))}
                 </div>
                 <div className="completed-section">
-                    <h2>Completed Tasks</h2>
+                    <h3>Completed Tasks</h3>
                     {completedTasks.map(task => (
                         <ToDoItem
                             key={task.id}

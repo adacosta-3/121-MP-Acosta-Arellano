@@ -49,14 +49,39 @@ public class MusicConfig {
                     "A$AP Rocky",
                     "https://upload.wikimedia.org/wikipedia/en/e/e5/ASAP_Rocky_%E2%80%93_Sundress.png",
                     arianne);
+
             Music j1 = new Music(
-                    "Karma",
-                    "Karma",
-                    "JoJo Siwa",
-                    "https://youtu.be/VZIm_2MgdeA",
+                    "Let You Break My Heart Again",
+                    "Let You Break My Heart Again",
+                    "Laufey, Philharmonia Orchestra",
+                    "https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2F3df60e3536af1ea4273af3526762caaa.1000x1000x1.jpg",
+                    joy);
+            Music j2 = new Music(
+                    "T.H.E. Human Experience",
+                    "This Can't Be It",
+                    "Daj",
+                    "https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2Fccede5ea6ced11ca1d45eaf3338fc748.464x464x1.jpg",
+                    joy);
+            Music j3 = new Music(
+                    "Vanish",
+                    "Take Time",
+                    "Giveon",
+                    "https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2F92e5e344a6a000db18be2b7f44303c20.1000x1000x1.png",
+                    joy);
+            Music j4 = new Music(
+                    "Last Time (feat. Snoh Aalegra)",
+                    "When It's All Said And Done...Take Time",
+                    "Giveon",
+                    "https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2Fe6d3b02e967a5726a623791434eddfd4.1000x1000x1.png",
+                    joy);
+            Music j5 = new Music(
+                    "WOKE UP",
+                    "WOKE UP",
+                    "XG",
+                    "https://t2.genius.com/unsafe/378x378/https%3A%2F%2Fimages.genius.com%2F2ab9e31152d12cec1ee5d6c28dd60426.1000x1000x1.png",
                     joy);
 
-            repository.saveAll(List.of(a1,a2,a3,a4,a5,j1));
+            repository.saveAll(List.of(a1,a2,a3,a4,a5,j1,j2,j3,j4,j5));
         };
     }
 }

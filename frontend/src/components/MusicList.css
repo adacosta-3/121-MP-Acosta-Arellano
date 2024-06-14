@@ -1,0 +1,79 @@
+/* MusicList.css */
+.page-container {
+    width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.music-page-heading-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.music-page-heading-container h2 {
+    font-size: 32px;
+}
+
+.user-switcher-container {
+    margin-bottom: 20px;
+}
+
+.music-container {
+    width: 800px;
+    padding: 20px;
+    background-color: #FDFDF2;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.music-list {
+    list-style: none;
+    padding: 0;
+}
+
+.music-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgba(223, 226, 228, 0.27);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.music-number {
+    font-size: 32px;
+    color: #384E53;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.music-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    margin-right: 20px;
+    border: 1px solid black;
+}
+
+.music-item h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    color: #384E53;
+}
+
+.music-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #555555;
+}
+
+/*.music-item a {*/
+/*    color: black;*/
+/*    text-decoration: none;*/
+/*    transition: color 0.3s ease;*/
+/*}*/
+
+/*.music-item a:hover {*/
+/*    color: #8DDAC1;*/
+/*}*/

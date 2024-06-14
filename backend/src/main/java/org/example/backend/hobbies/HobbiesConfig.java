@@ -22,7 +22,7 @@ public class HobbiesConfig {
 
             Hobby a1 = new Hobby(
                     "Watching Films",
-                    "I love watching films when I have the time. I try to keep myself updated with various movie franchises (even the terrible ones), latest director releases, and current critically acclaimed films. Below is the trailer of my favorite release recently.",
+                    "I love watching films when I have the time. I try to keep myself updated with various movie franchises (even the terrible ones), latest director releases, and current critically acclaimed films. Here is the trailer of my favorite release recently.",
                     "https://www.youtube.com/watch?v=XJMuhwVlca4&pp=ygUHZnVyaW9zYQ%3D%3D",
                     arianne);
             Hobby a2 = new Hobby(
@@ -40,13 +40,29 @@ public class HobbiesConfig {
                     "I have always been fascinated with marine life, and even animals in general. I currently have a small aquarium housing my fish Stacey and my snail Shelly. ",
                     "https://youtu.be/woSFGeMpoxI",
                     arianne);
-            Hobby sewing = new Hobby(
+
+            Hobby j1 = new Hobby(
                     "Sewing",
-                    "Making my own articles of clothing",
-                    "https://youtu.be/tBudnRKg_r8",
+                    "I love sewing because it lets me create and repair clothes. It's a blend of artistry and practicality, whether I'm working with a needle and thread or using my sewing machine. Here's one of the tops I plan on making during the break.",
+                    "https://youtu.be/x_s5-LLhi1w?si=vvLOYTOGBbE2ptKt",
+                    joy);
+            Hobby j2 = new Hobby(
+                    "Watching Sitcoms",
+                    "Watching sitcoms (The Office is 10/10, my absolute fave) is my go-to for relaxation and laughter. I enjoy the witty humor and quirky characters that make everyday situations hilarious.",
+                    "https://youtu.be/TVQgSIlN4no?si=tYWpuXrkFFqLOClw",
+                    joy);
+            Hobby j3 = new Hobby(
+                    "Reading",
+                    "Reading is my escape into different worlds and perspectives. Whether it's fiction or non-fiction, books provide endless learning and entertainment.",
+                    "https://youtu.be/z7Ote6xLOlM?si=SgN2yhnJv5co2miw",
+                    joy);
+            Hobby j4 = new Hobby(
+                    "Thrifting",
+                    "Thrifting is a treasure hunt for me—it's about finding unique pieces and vintage gems while being eco-friendly. I love exploring thrift stores and online platforms for hidden treasures.",
+                    "https://youtu.be/iXR4AWCH_Sk?si=BcPjGm8oR0AbePjm",
                     joy);
 
-            repository.saveAll(List.of(a1,a2,a3,a4,sewing));
+            repository.saveAll(List.of(a1,a2,a3,a4,j1,j2,j3,j4));
         };
     }
 }
