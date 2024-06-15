@@ -31,17 +31,20 @@ public class Music {
     private String album;
     private String artist;
     private String aaLink; // album art
+    private String spLink; // spotify link
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private User user;
 
-    public Music (String song, String album, String artist, String aaLink, User user) {
+
+    public Music (String song, String album, String artist, String aaLink, String spLink, User user) {
         this.song = song;
         this.album = album;
         this.artist = artist;
         this.aaLink = aaLink;
+        this.spLink = spLink;
         this.user = user;
     }
 }

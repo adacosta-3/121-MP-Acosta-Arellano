@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getMusicByUser } from '../api/api'; // Adjust the import path as necessary
+import { getMusicByUser } from '../api/api';
 import './MusicList.css';
+import SpotifyEmbed from './SpotifyEmbed';
 
 const MusicList = ({ userId, nickname }) => {
     const [musicList, setMusicList] = useState([]);
@@ -21,7 +22,7 @@ const MusicList = ({ userId, nickname }) => {
     return (
         <div>
             <div className="music-heading-container">
-                <h2 className="music-heading">{nickname}'s Music</h2>
+                <h2 className="music-heading">{nickname}'s Current Top 5 Music</h2>
             </div>
             <div className="music-container">
                 <ul className="music-list">
@@ -33,11 +34,7 @@ const MusicList = ({ userId, nickname }) => {
                                 <h3>{music.song}</h3>
                                 <p>Artist: {music.artist}</p>
                                 <p>Album: {music.album}</p>
-                                {/* {music.aaLink && (
-                                    <p>
-                                        YouTube Link: <a href={music.aaLink} target="_blank" rel="noopener noreferrer">{music.aaLink}</a>
-                                    </p>
-                                )} */}
+                                {music.spLink && <SpotifyEmbed className={"spotify-embed-container"} link={music.spLink} />}
                             </div>
                         </li>
                     ))}

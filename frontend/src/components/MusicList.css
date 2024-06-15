@@ -49,8 +49,8 @@
 }
 
 .music-item img {
-    width: 100px;
-    height: 100px;
+    width: 165px;
+    height: 165px;
     border-radius: 8px;
     margin-right: 20px;
     border: 1px solid black;
@@ -67,6 +67,10 @@
     font-size: 14px;
     color: #555555;
 }
+
+/*.spotify-embed-container {*/
+/*    margin-top: 10px; !* Adjust spacing *!*/
+/*}*/
 
 /*.music-item a {*/
 /*    color: black;*/
