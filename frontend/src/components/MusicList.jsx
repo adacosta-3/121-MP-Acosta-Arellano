@@ -22,7 +22,7 @@ const MusicList = ({ userId, nickname }) => {
     return (
         <div>
             <div className="music-heading-container">
-                <h2 className="music-heading">{nickname}'s Current Top 5 Music</h2>
+                <h2 className="music-heading">{nickname}'s Current Top 5 Tracks</h2>
             </div>
             <div className="music-container">
                 <ul className="music-list">
