@@ -39,7 +39,8 @@ const HomePage = () => {
                     </ul>
                     <p>Dislikes:</p>
                     <ul className="like-dislike-list">
-                        <li><i className="fas fa-thumbs-down" style={{ color: 'red' }}></i> Waking up early (before 9am)</li>
+                        <li><i className="fas fa-thumbs-down" style={{color: 'red'}}></i> Waking up early (before 9am)</li>
+                        <li><i className="fas fa-thumbs-down" style={{color: 'red'}}></i> Drinking water with a straw</li>
                     </ul>
                 </div>
                 <div className="likes-dislikes-column">
