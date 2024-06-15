@@ -9,7 +9,7 @@ import {
     getCompletedToDosByUserAndLabel
 } from '../api/api';
 import ToDoItem from './ToDoItem';
-import './ToDoList.css';
+import './styling/ToDoList.css';
 
 const ToDoList = ({ userId , nickname}) => {
     const [tasks, setTasks] = useState([]);

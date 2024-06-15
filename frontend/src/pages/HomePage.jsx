@@ -1,7 +1,7 @@
 import React from 'react';
 import '../components/Navbar.jsx';
-import './Pages.css';
-import './HomePage.css';
+import './styling/Pages.css';
+import './styling/HomePage.css';
 
 const HomePage = () => {
     return (
@@ -9,7 +9,7 @@ const HomePage = () => {
             <h1>Amoeba Sisters</h1>
             <h2 style={{ fontSize: '36px' }}>Welcome to our site!</h2>
             <p>
-                This is our final requirement for CMSC 121. It allows us to showcase who we are.
+                This is our final requirement for CMSC 121: Web Programming. It allows us to showcase who we are.
                 This is being submitted to Inst. David Pasumbal.
             </p>
 
@@ -18,10 +18,10 @@ const HomePage = () => {
                 <div className="creator" style={{ textAlign: 'left' }}>
                     <img src="/arianne-acosta.png" alt="Member 1" className="creator-img" />
                     <h3>Arianne Acosta</h3>
-                    <p>I am Arianne Acosta, currently pursuing a Bachelor of Science in Computer Science at the University of the Philippines Manila. I am driven by a passion for learning and an insatiable curiosity that fuels my thirst for knowledge. While I immerse myself in the world of technology and computer science, I strive to balance it with my creative pursuits. I have a deep love for cooking and culinary arts, music, and artistic expression, which allows me to blend my technical skills with creativity and innovation.</p>
+                    <p>I am Arianne Acosta, currently pursuing a Bachelor of Science in Computer Science at the University of the Philippines, Manila. I am driven by a passion for learning and an insatiable curiosity that fuels my thirst for knowledge. While I immerse myself in the world of technology and computer science, I strive to balance it with my creative pursuits. I have a deep love for cooking and culinary arts, music, and artistic expression, which allows me to blend my technical skills with creativity and innovation.</p>
                 </div>
                 <div className="creator" style={{ textAlign: 'right' }}>
-                    <p>I'm Joy Arellano, currently pursuing a degree in computer science at the University of the Philippines, Manila. I find great satisfaction in delving into complex problem-solving and mastering coding intricacies. Despite not being a coffee drinker, I enjoy the cozy ambiance of cafes, which sparks inspiration and focus during study sessions. I take pride in always looking put together, as presentation reflects my commitment to professionalism and self-confidence. Additionally, I have a deep affection for our family's dogs—they bring immense joy and comfort into my life.</p>
+                    <p>I am Joy Arellano, currently pursuing a degree in computer science at the University of the Philippines, Manila. I find great satisfaction in delving into complex problem-solving and mastering coding intricacies. Despite not being a coffee drinker, I enjoy the cozy ambiance of cafes, which sparks inspiration and focus during study sessions. I take pride in always looking put together, as presentation reflects my commitment to professionalism and self-confidence. Additionally, I have a deep affection for our family's dogs—they bring immense joy and comfort into my life.</p>
                     <h3>Joy Arellano</h3>
                     <img src="/joy-arellano.png" alt="Member 2" className="creator-img" />
                 </div>
@@ -47,7 +47,7 @@ const HomePage = () => {
                     <h3>Joy</h3>
                     <p>Likes:</p>
                     <ul className="like-dislike-list">
-                        <li><i className="fas fa-thumbs-up" style={{ color: 'green' }}></i> The sound of rain hitting the pavement and tents</li>
+                        <li><i className="fas fa-thumbs-up" style={{ color: 'green' }}></i> Sound of rain hitting the pavement and tents</li>
                         <li><i className="fas fa-thumbs-up" style={{ color: 'green' }}></i> Reading sci-fi books</li>
                         <li><i className="fas fa-thumbs-up" style={{ color: 'green' }}></i> Sunsets</li>
                     </ul>

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import UserSwitcher from '../components/UserSwitcher';
 import MusicList from '../components/MusicList';
 import {getUserDetails} from "../api/api.js";
-import './Pages.css';
+import './styling/Pages.css';
 
 const MusicPage = () => {
     const [selectedUserId, setSelectedUserId] = useState(1);

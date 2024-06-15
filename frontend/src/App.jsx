@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import ToDosPage from './pages/ToDosPage';
 import HobbiesPage from './pages/HobbiesPage';
 import MusicPage from './pages/MusicPage';
+import Footer from './components/Footer';
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                         <Route path="/music" element={<MusicPage />} />
                     </Routes>
                 </div>
+                <Footer />
             </div>
         </Router>
     );

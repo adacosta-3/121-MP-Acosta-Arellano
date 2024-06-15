@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getHobbiesByUser } from '../api/api';
 import YoutubeEmbed from "./YoutubeEmbed.jsx";
-import './HobbiesList.css';
+import './styling/HobbiesList.css';
 
 const HobbiesList = ({ userId, nickname }) => {
     const [hobbies, setHobbies] = useState([]);

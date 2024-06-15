@@ -1,5 +1,5 @@
 import React from 'react';
-import './ToDoItem.css';
+import './styling/ToDoItem.css';
 
 const ToDoItem = ({ task, deleteTask, toggleCompleted }) => {
     return (

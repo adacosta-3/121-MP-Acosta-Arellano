@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import UserSwitcher from '../components/UserSwitcher';
 import HobbiesList from '../components/HobbiesList';
 import { getUserDetails } from '../api/api';
-import "./YT.css";
+import "./styling/YT.css";
 import YoutubeEmbed from "../components/YoutubeEmbed";
-import './Pages.css';
+import './styling/Pages.css';
 
 const HobbiesPage = () => {
     const [selectedUserId, setSelectedUserId] = useState(1);

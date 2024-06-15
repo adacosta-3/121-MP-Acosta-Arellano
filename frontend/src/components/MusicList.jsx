@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getMusicByUser } from '../api/api';
-import './MusicList.css';
+import './styling/MusicList.css';
 import SpotifyEmbed from './SpotifyEmbed';
 
 const MusicList = ({ userId, nickname }) => {

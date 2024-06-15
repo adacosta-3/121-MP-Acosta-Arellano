@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import UserSwitcher from '../components/UserSwitcher';
 import ToDoList from '../components/ToDoList';
 import {getUserDetails} from "../api/api.js";
-import './Pages.css';
+import './styling/Pages.css';
 
 const ToDosPage = () => {
     const [selectedUserId, setSelectedUserId] = useState(1);
