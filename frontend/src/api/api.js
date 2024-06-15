@@ -15,6 +15,8 @@ export const getMusicByUser = async (userId) => {
     return response.data;
 };
 
+// ToDo APIs
+
 export const getToDos = async () => {
     const response = await api.get('/todos');
     return response.data;
@@ -37,12 +39,6 @@ export const getUnfinishedToDosByUser = async (userId) => {
 
 export const addToDo = async (todo) => {
     const response = await api.post('/todos', todo);
-    return response.data;
-};
-export const updateToDo = async (todoId, task, description, label) => {
-    const response = await api.put(`/todos/update/${todoId}`, null, {
-        params: { task, description, label },
-    });
     return response.data;
 };
 

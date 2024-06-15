@@ -55,6 +55,7 @@ const ToDoList = ({ userId , nickname}) => {
         }
     };
 
+    // Adding a new ToDo
     const handleAddTask = async () => {
         try {
             await addToDo({
@@ -74,6 +75,7 @@ const ToDoList = ({ userId , nickname}) => {
         }
     };
 
+    // Deleting a ToDo
     const handleDeleteTask = async (id) => {
         try {
             await deleteToDo(id);
@@ -89,6 +91,7 @@ const ToDoList = ({ userId , nickname}) => {
         }
     };
 
+    // Toggling the completion of a ToDo
     const handleToggleCompleted = async (id, completed) => {
         try {
             await updateCompletion(id, completed);
