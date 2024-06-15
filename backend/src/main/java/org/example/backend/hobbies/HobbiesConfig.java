@@ -37,7 +37,7 @@ public class HobbiesConfig {
                     arianne);
             Hobby a4 = new Hobby(
                     "Fishkeeping",
-                    "I have always been fascinated with marine life, and even animals in general. I currently have a small aquarium housing my fish Stacey and my snail Shelly. ",
+                    "I have always been fascinated with marine life, and even animals in general. I currently have a small aquarium housing my Feesh Stacey and my snail Shelly. ",
                     "https://youtu.be/woSFGeMpoxI",
                     arianne);
 
