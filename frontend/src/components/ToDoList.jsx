@@ -77,8 +77,13 @@ const ToDoList = ({ userId , nickname}) => {
     const handleDeleteTask = async (id) => {
         try {
             await deleteToDo(id);
-            fetchTodos();
             fetchLabels();
+            fetchTodos();
+            const remainingTasks = await getUnfinishedToDosByUserAndLabel(userId, selectedLabel);
+            if (remainingTasks.length === 0) { // deleted task is last in its category
+                setSelectedLabel('All');
+                fetchTodos();
+            }
         } catch (error) {
             console.error('Error deleting todo:', error);
         }
