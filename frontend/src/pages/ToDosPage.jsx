@@ -24,7 +24,8 @@ const ToDosPage = () => {
 
     return (
         <div>
-            <h1>To-Dos Page</h1>
+            <h1>Amoeba Sisters</h1>
+            <h2 style={{ fontSize: '36px' }}>To-Dos Page</h2>
             <UserSwitcher selectedUserId={selectedUserId} setSelectedUserId={setSelectedUserId} />
             <ToDoList userId={selectedUserId} nickname={nickname} />
         </div>

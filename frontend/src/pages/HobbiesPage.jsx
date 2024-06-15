@@ -26,7 +26,8 @@ const HobbiesPage = () => {
 
     return (
         <div>
-            <h1>Hobbies Page</h1>
+            <h1>Amoeba Sisters</h1>
+            <h2 style={{ fontSize: '36px' }}>Hobbies Page</h2>
             <UserSwitcher selectedUserId={selectedUserId} setSelectedUserId={setSelectedUserId} />
             <HobbiesList userId={selectedUserId} nickname={nickname} />
         </div>

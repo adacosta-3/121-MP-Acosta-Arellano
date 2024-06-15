@@ -24,7 +24,8 @@ const MusicPage = () => {
 
     return (
         <div>
-            <h1>Music Page</h1>
+            <h1>Amoeba Sisters</h1>
+            <h2 style={{ fontSize: '36px' }}>Music Page</h2>
             <UserSwitcher selectedUserId={selectedUserId} setSelectedUserId={setSelectedUserId} />
             <MusicList userId={selectedUserId} nickname={nickname}/>
         </div>
