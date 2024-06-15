@@ -93,11 +93,11 @@ const HomePage = () => {
                 </div>
                 <div className="keep-in-touch-column">
                     <a href="https://www.facebook.com/kristine.arellano.754/" target="_blank" rel="noopener noreferrer" className="contact-link">
-                        <i className="fab fa-facebook" style={{ fontSize: '2em', color: '#1E90FF', marginRight: '10px' }}></i>
+                        <i className="fab fa-facebook" style={{ fontSize: '2em', color: '#bd427a', marginRight: '10px' }}></i>
                         <span className="contact-text">Joy Arellano</span>
                     </a>
                     <a href="https://www.instagram.com/joy__are/" target="_blank" rel="noopener noreferrer" className="contact-link">
-                        <i className="fab fa-instagram" style={{ fontSize: '2em', color: '#1E90FF' }}></i>
+                        <i className="fab fa-instagram" style={{ fontSize: '2em', color: '#bd427a' }}></i>
                         <span className="contact-text">joy__are</span>
                     </a>
                 </div>
