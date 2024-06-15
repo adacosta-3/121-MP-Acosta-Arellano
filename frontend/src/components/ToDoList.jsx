@@ -20,6 +20,12 @@ const ToDoList = ({ userId , nickname}) => {
     const [selectedLabel, setSelectedLabel] = useState('All');
     const [labels, setLabels] = useState([]);
 
+    // Change selected filter to all when user ID is changed
+    useEffect(() => {
+        setSelectedLabel('All');
+    }, [userId]);
+
+    // Fetching todos and labels when switching
     useEffect(() => {
         fetchTodos();
         fetchLabels();
@@ -80,7 +86,7 @@ const ToDoList = ({ userId , nickname}) => {
         try {
             await deleteToDo(id);
             fetchLabels();
-            fetchTodos();
+            fetchTodos(); // Fetch tasks again to update the list
             const remainingTasks = await getUnfinishedToDosByUserAndLabel(userId, selectedLabel);
             if (remainingTasks.length === 0) { // deleted task is last in its category
                 setSelectedLabel('All');
