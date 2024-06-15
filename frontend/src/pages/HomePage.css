@@ -1,0 +1,141 @@
+.creators-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.creator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px;
+}
+
+.creator-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.pets-container {
+    display: flex;
+    justify-content: space-around;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.pet-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.likes-dislikes-container {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.likes-dislikes-column {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Adjust margin bottom to decrease gap */
+}
+
+.likes-dislikes-column h3 {
+    font-size: 18px;
+    color: #384E53;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px; /* Adjust margin bottom to decrease gap */
+}
+
+.keep-in-touch-container {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.keep-in-touch-column {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.keep-in-touch-column a {
+    margin: 10px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #384E53;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.contact-link i {
+    font-size: 2em;
+    margin-right: 10px;
+}
+
+.contact-link:hover {
+    color: #000;
+}
+
+.contact-text {
+    font-size: 14px;
+    color: #384E53;
+}
+
+h3 {
+    font-size: 18px;
+    color: #384E53;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+p {
+    font-size: 14px;
+    color: #384E53;
+}
+
+.pet-item {
+    text-align: center;
+}
+
+.pet-name {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.likes-dislikes-column p {
+    padding-left: 20px;
+}
+
+.like-dislike-list {
+    list-style: none;
+    font-size: 14px;
+    color: #384E53;
+    padding-left: 20px;
+    margin-top: 2px;
+    margin-bottom: 0; /* Adjust margin bottom to decrease gap */
+}
+
+.like-dislike-list li {
+    margin-bottom: 2px;
+}
+
+.like-dislike-list i {
+    margin-right: 2px;
+}
