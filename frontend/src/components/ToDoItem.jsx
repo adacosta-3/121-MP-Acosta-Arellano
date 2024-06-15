@@ -11,9 +11,9 @@ const ToDoItem = ({ task, deleteTask, toggleCompleted }) => {
                 className="task-checkbox"
             />
             <div className="task-details">
-                <div>{task.task}</div>
+                <div className="task">{task.task}</div>
                 <div>{task.description}</div>
-                <div>{task.label}</div>
+                <div className="label">{task.label}</div>
             </div>
             <button className="delete-task" onClick={() => deleteTask(task.id)}>
                 <i className="fas fa-trash"></i>

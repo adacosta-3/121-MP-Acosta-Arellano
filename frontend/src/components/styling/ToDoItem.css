@@ -27,3 +27,11 @@
 /*.todo-item .delete-task:hover {*/
 /*    color: darkred;*/
 /*}*/
+
+.label {
+    color: #c586ff;
+}
+
+.task {
+    font-weight: bold;
+}
